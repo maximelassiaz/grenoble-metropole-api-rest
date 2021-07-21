@@ -1,0 +1,28 @@
+{
+  "name": "grenoble-metropole-rest-api",
+  "version": "1.0.0",
+  "description": "Une API REST reprenant les données publiques GeoJSON de Grenoble Metropole (data.metropolegrenoble.fr)",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "keywords": [
+    "API",
+    "REST",
+    "GEOJSON",
+    "MONGODB",
+    "MONGOOSE",
+    "NODE",
+    "EXPRESS",
+    "JWT"
+  ],
+  "author": "Maxime LASSIAZ",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
