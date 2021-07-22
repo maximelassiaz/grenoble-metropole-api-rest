@@ -2,9 +2,10 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
+const { authenticateToken, authenticateTokenAdmin } = require('../authenticate')
 
 // Get all users
-router.get('/', async (req, res) => {
+router.get('/', authenticateTokenAdmin, async (req, res) => {
     try {
         const users = await User.find()
         res.json(users)
