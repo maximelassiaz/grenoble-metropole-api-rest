@@ -1,3 +1,4 @@
+const { response } = require('express')
 const express = require('express')
 const router = express.Router()
 const Parkingmeter = require('../../models/parking/parkingmeter')
@@ -14,7 +15,7 @@ router.get('/', async (req, res) => {
 
 // Get one
 router.get('/:id', getParkingmeter, (req, res) => {
-    res.json(req.parkingmeter)
+    res.json(response.parkingmeter)
 })
 
 // Create one

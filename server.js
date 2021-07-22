@@ -14,10 +14,18 @@ db.once('open', () => console.log('Connected to Database'))
 
 app.use(express.json())
 
-// Parking Router
-const parkingmeterRouter = require('./routes/parking/parkingmeters')
+// User Router
+const userRouter = require('./routes/users')
+app.use('/api/users', userRouter)
 
+// Login Router
+const loginRouter = require('./routes/login')
+app.use('/api/login', loginRouter)
+
+// Parking Routers
+const parkingmeterRouter = require('./routes/parking/parkingmeters')
 app.use('/api/parking/parkingmeters', parkingmeterRouter)
+
 
 app.listen(3000, () => {
     console.log('Server running on port 3000.');
