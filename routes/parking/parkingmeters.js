@@ -2,9 +2,10 @@ const { response } = require('express')
 const express = require('express')
 const router = express.Router()
 const Parkingmeter = require('../../models/parking/parkingmeter')
+const { authenticateToken, authenticateTokenAdmin } = require('../../authenticate')
 
 // Get all
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken, async (req, res) => {
     try {
         const parkingmeters = await Parkingmeter.find()
         res.json(parkingmeters)
@@ -14,12 +15,12 @@ router.get('/', async (req, res) => {
 })
 
 // Get one
-router.get('/:id', getParkingmeter, (req, res) => {
-    res.json(response.parkingmeter)
+router.get('/:id', authenticateToken, getParkingmeter, (req, res) => {
+    res.json(res.parkingmeter)
 })
 
 // Create one
-router.post('/', async (req, res) => {
+router.post('/', authenticateTokenAdmin, async (req, res) => {
     const parkingmeter = new Parkingmeter({
         type: req.body.type,
         geometry: req.body.geometry,
@@ -34,7 +35,7 @@ router.post('/', async (req, res) => {
 })
 
 // Updating one
-router.patch('/:id', getParkingmeter, async (req, res) => {
+router.patch('/:id', authenticateTokenAdmin, getParkingmeter, async (req, res) => {
     if (req.body.type != null) {
         res.parkingmeter.type = req.body.type
     }
@@ -53,7 +54,7 @@ router.patch('/:id', getParkingmeter, async (req, res) => {
 })
 
 // Delete one
-router.delete('/:id', getParkingmeter, async (req, res) => {
+router.delete('/:id', authenticateTokenAdmin, getParkingmeter, async (req, res) => {
     try {
         await res.parkingmeter.remove()
         res.json({ message: `Parking meter ${req.params.id} has been deleted.`})

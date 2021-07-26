@@ -22,6 +22,10 @@ app.use('/api/users', userRouter)
 const loginRouter = require('./routes/login')
 app.use('/api/login', loginRouter)
 
+// RefreshToken Router
+const refreshTokenRouter = require('./routes/refreshToken')
+app.use('/api/refreshToken', refreshTokenRouter)
+
 // Parking Routers
 const parkingmeterRouter = require('./routes/parking/parkingmeters')
 app.use('/api/parking/parkingmeters', parkingmeterRouter)

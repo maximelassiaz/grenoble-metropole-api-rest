@@ -1,3 +1,9 @@
+/* 
+    Database source for parking meters data :
+    Data presentation : https://data.metropolegrenoble.fr/ckan/dataset/emplacement-des-horodateurs-sur-grenoble
+    Data json : https://entrepot.metropolegrenoble.fr/opendata/38185-GRE/Stationnement/json/STATIONNEMENT_HORODATEUR_VDG_EPSG4326.json
+*/
+
 const mongoose = require('mongoose')
 
 const parkingmetersSchema = new mongoose.Schema({

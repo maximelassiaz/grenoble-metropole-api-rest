@@ -15,7 +15,7 @@ router.get('/', authenticateTokenAdmin, async (req, res) => {
 })
 
 // Get one user
-router.get('/:id', getUser, (req, res) => {
+router.get('/:id', authenticateTokenAdmin, getUser, (req, res) => {
     res.json(res.user)
 })
 
@@ -46,23 +46,33 @@ router.post('/', async (req, res) => {
 })
 
 // Update user
-// router.patch('/:id', getUser, async (req, res) => {
-//     if (req.body.username != null) {
-//         res.user.username = req.body.username
-//     }
-//     if (req.body.password != null) {
-//         res.user.password = req.body.password
-//     }
-//     try {
-//         const updatedUser = await res.user.save()
-//         res.json(updatedUser)
-//     } catch (err) {
-//         res.status(400).json({ message: err.message })
-//     }
-// })
+router.patch('/:id', getUser, authenticateToken, async (req, res) => {
+    // Check if passwords match
+    const match = await bcrypt.compare(req.body.password, res.user.password)
+    if (!match) return res.status(403).json({ message: "Invalid credentials"})
+
+    // Check if both user id match
+    if (req.params.id !== req.user.id) return res.status(403).json({ message: "Invalid credentials"})
+
+    if (req.body.username != null) {
+        res.user.username = req.body.username
+    }
+    
+    try {
+        if (req.body.newPassword != null) {
+            const salt = await bcrypt.genSalt() // default is 10 rounds
+            res.user.password = await bcrypt.hash(req.body.newPassword, salt)
+        }
+
+        const updatedUser = await res.user.save()
+        res.json(updatedUser)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+})
 
 // Delete user
-router.delete('/:id', getUser, async (req, res) => {
+router.delete('/:id', getUser, authenticateTokenAdmin, async (req, res) => {
     try {
         await res.user.remove()
         res.json({ message: `User ${req.params.id} has been deleted.`})

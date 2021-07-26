@@ -7,9 +7,9 @@ function authenticateToken(req, res, next) {
     if (token == null) return res.sendStatus(401)
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403)
-    req.user = user
-    next()
+        if (err) return res.sendStatus(403)
+        req.user = user
+        next()
     })
 }
 
@@ -19,6 +19,7 @@ function authenticateTokenAdmin(req, res, next) {
     
     if (token == null) return res.sendStatus(401)
 
+    // Check if user has admin role
     const payload = jwt.decode(token)
 
     if (!payload.isAdmin) {
