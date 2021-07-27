@@ -1,10 +1,9 @@
-const { response } = require('express')
 const express = require('express')
 const router = express.Router()
 const Parkingmeter = require('../../models/parking/parkingmeter')
 const { authenticateToken, authenticateTokenAdmin } = require('../../authenticate')
 
-// Get all
+// Get all parkingmeters
 router.get('/', authenticateToken, async (req, res) => {
     try {
         const parkingmeters = await Parkingmeter.find()
@@ -14,12 +13,12 @@ router.get('/', authenticateToken, async (req, res) => {
     }
 })
 
-// Get one
+// Get one parkingmeter
 router.get('/:id', authenticateToken, getParkingmeter, (req, res) => {
     res.json(res.parkingmeter)
 })
 
-// Create one
+// Create one parkingmeter
 router.post('/', authenticateTokenAdmin, async (req, res) => {
     const parkingmeter = new Parkingmeter({
         type: req.body.type,
@@ -34,7 +33,7 @@ router.post('/', authenticateTokenAdmin, async (req, res) => {
     }
 })
 
-// Updating one
+// Updating one parkingmeter
 router.patch('/:id', authenticateTokenAdmin, getParkingmeter, async (req, res) => {
     if (req.body.type != null) {
         res.parkingmeter.type = req.body.type
@@ -53,11 +52,11 @@ router.patch('/:id', authenticateTokenAdmin, getParkingmeter, async (req, res) =
     }
 })
 
-// Delete one
+// Delete one parkingmeter
 router.delete('/:id', authenticateTokenAdmin, getParkingmeter, async (req, res) => {
     try {
         await res.parkingmeter.remove()
-        res.json({ message: `Parking meter ${req.params.id} has been deleted.`})
+        res.json({ message: `Parking meter ${req.params.id} has been deleted`})
     } catch (err) {
         res.status(500).json({ message: err.message})
     }

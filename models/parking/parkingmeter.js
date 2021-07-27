@@ -61,8 +61,9 @@ const parkingmetersSchema = new mongoose.Schema({
         HOROD_MODIF_NOM: {
             type: mongoose.Schema.Types.Mixed,
             default: null,
+            required: true,
             validate: {
-                validator: (element) => typeof element === 'string' | element === null,
+                validator: (element) => typeof element === 'string' || element === null,
                 message: "HOROD_MODIF_NOM must be either of type string or null" 
             }
         }

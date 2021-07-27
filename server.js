@@ -30,6 +30,9 @@ app.use('/api/refreshToken', refreshTokenRouter)
 const parkingmeterRouter = require('./routes/parking/parkingmeters')
 app.use('/api/parking/parkingmeters', parkingmeterRouter)
 
+const parkingspaceRouter = require('./routes/parking/parkingspaces')
+app.use('/api/parking/parkingspaces', parkingspaceRouter)
+
 
 app.listen(3000, () => {
     console.log('Server running on port 3000.');
