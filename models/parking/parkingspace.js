@@ -28,31 +28,27 @@ const parkingspacesSchema = new mongoose.Schema({
     properties: {
         BARRETTE_ID: {
             type: Number,
-            required: true
+            default: null
         },
         BARRETTE_NUM: {
             type: Number,
-            required: true
+            default: null
         },
         BARRETTE_TARIF_NOM: {
             type: String,
-            required: true
+            default: null
         },
         BARRETTE_ZONE: {
-            type: mongoose.Schema.Types.Mixed,
+            type: String,
             default: null,
-            validate: {
-                validator: (element) => typeof element === "string" || element == null,
-                message: "Barrette zone must be of type string or null."
-            }
         },
         BARRETTE_VOIE_NOMCOMPL: {
             type: String,
-            required: true
+            default: null
         },
         BARRETTE_TYPE_NOM: {
             type: String,
-            required: true
+            default: null
         }
     }
 })

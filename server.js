@@ -36,6 +36,9 @@ app.use('/api/parking/parkingspaces', parkingspaceRouter)
 const parkingtariffzoneRouter = require('./routes/parking/parkingtariffzones')
 app.use('/api/parking/parkingtariffzones', parkingtariffzoneRouter)
 
+const parkingspecializedplaceRouter = require('./routes/parking/parkingspecializedplaces')
+app.use('/api/parking/parkingspecializedplaces', parkingspecializedplaceRouter)
+
 
 app.listen(3000, () => {
     console.log('Server running on port 3000.');

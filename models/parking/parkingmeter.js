@@ -28,44 +28,39 @@ const parkingmetersSchema = new mongoose.Schema({
     properties: {
         HOROD_ID: {
             type: Number,
-            required: true
+            default: null
         },
         HOROD_DATEMES: {
             type: String,
-            required: true
+            default: null
         },
         HOROD_ZONE: {
             type: String,
-            required: true
+            default: null
         },
         HOROD_DATECRE: {
             type: String,
-            required: true
+            default: null
         },
         HOROD_MODEL_NOM: {
             type: String,
-            required: true
+            default: null
         },
         HOROD_NUMPLASTRON: {
             type: String,
-            required: true
+            default: null
         },
         HOROD_TARIF_NOM: {
             type: String,
-            required: true
+            default: null
         },
         HOROD_LECMAGN: {
             type: Number,
-            required: true
+            default: null
         },
         HOROD_MODIF_NOM: {
-            type: mongoose.Schema.Types.Mixed,
-            default: null,
-            required: true,
-            validate: {
-                validator: (element) => typeof element === 'string' || element === null,
-                message: "HOROD_MODIF_NOM must be either of type string or null" 
-            }
+            type: String,
+            default: null
         }
     }
 })

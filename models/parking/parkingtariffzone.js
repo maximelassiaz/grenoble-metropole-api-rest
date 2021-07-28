@@ -28,15 +28,15 @@ const parkingtariffzonesSchema = new mongoose.Schema({
     properties: {
         DEC_CONT_STAT_ID: {
             type: Number,
-            required: true
+            default: null
         },
         DEC_CONT_STAT_NUM: {
             type: Number,
-            required: true
+            default: null
         },
         DEC_CONT_STAT_NOM: {
             type: String,
-            required: true
+            default: null
         }
     }
 })
