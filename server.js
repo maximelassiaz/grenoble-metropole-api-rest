@@ -39,6 +39,10 @@ app.use('/api/parking/parkingtariffzones', parkingtariffzoneRouter)
 const parkingspecializedplaceRouter = require('./routes/parking/parkingspecializedplaces')
 app.use('/api/parking/parkingspecializedplaces', parkingspecializedplaceRouter)
 
+// Environment Routers
+const treesRouter = require('./routes/environment/trees')
+app.use('/api/environment/trees', treesRouter)
+
 
 app.listen(3000, () => {
     console.log('Server running on port 3000.');
