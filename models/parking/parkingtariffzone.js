@@ -1,5 +1,5 @@
 /* 
-    Database source for parking spaces data :
+    Database source for parking tariff zones data :
     Data presentation : https://data.metropolegrenoble.fr/ckan/dataset/plan-de-stationnement-selon-les-zones-tarifaires
     Data json : https://entrepot.metropolegrenoble.fr/opendata/38185-GRE/Stationnement/json/STATIONNEMENT_DECOUPAGE_VDG_EPSG4326.json
 */

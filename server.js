@@ -40,12 +40,15 @@ const parkingspecializedplaceRouter = require('./routes/parking/parkingspecializ
 app.use('/api/parking/parkingspecializedplaces', parkingspecializedplaceRouter)
 
 // Environment Routers
-const treesRouter = require('./routes/environment/trees')
-app.use('/api/environment/trees', treesRouter)
+const treeRouter = require('./routes/environment/trees')
+app.use('/api/environment/trees', treeRouter)
 
 // Education Routers
 const kindergartenRouter = require('./routes/education/kindergartens')
 app.use('/api/education/kindergartens', kindergartenRouter)
+
+const elementaryschoolRouter = require('./routes/education/elementaryschools')
+app.use('/api/education/elementaryschools', elementaryschoolRouter)
 
 
 app.listen(5000, () => {

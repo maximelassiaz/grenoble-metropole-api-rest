@@ -1,5 +1,5 @@
 /* 
-    Database source for parking meters data :
+    Database source for parking specialized zones data :
     Data presentation : https://data.metropolegrenoble.fr/ckan/dataset/emplacement-des-places-specialisees-pour-tous-les-types-de-places
     Data json : https://entrepot.metropolegrenoble.fr/opendata/38185-GRE/Stationnement/json/STATIONNEMENT_PLASPE_VDG_EPSG4326.json
 */

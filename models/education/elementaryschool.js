@@ -1,12 +1,12 @@
 /* 
-    Database source for kindergartens data :
-    Data presentation : https://data.metropolegrenoble.fr/ckan/dataset/les-decoupages-des-ecoles-maternelles
-    Data json : https://entrepot.metropolegrenoble.fr/opendata/38185-GRE/Education/json/EDUCATION_DECOUPAGE_MATERNELLES_EPSG4326.json
+    Database source for elementary schools data :
+    Data presentation : https://data.metropolegrenoble.fr/ckan/dataset/les-decoupages-des-ecoles-elementaires
+    Data json : https://entrepot.metropolegrenoble.fr/opendata/38185-GRE/Education/json/EDUCATION_DECOUPAGE_ELEMENTAIRES_EPSG4326.json
 */
 
 const mongoose = require('mongoose')
 
-const kindergartensSchema = new mongoose.Schema({
+const elementaryschoolsSchema = new mongoose.Schema({
     type: {
         type: String,
         required: true
@@ -28,19 +28,19 @@ const kindergartensSchema = new mongoose.Schema({
         }
     },
     properties: {
-        DEC_DECOUPAGE_MATERNELLES_ID: {
+        DEC_DECO_ELEM_ID: {
             type: Number,
             required: true
         },
-        DEC_DECOUPAGE_MATERNELLES_NUM: {
+        DEC_DECO_ELEM_NUM: {
             type: Number,
             required: true
         },
-        DEC_DECOUPAGE_MATERNELLES_NOM: {
+        DEC_DECO_ELEM_NOM: {
             type: String,
             required: true
         }
     }
 })
 
-module.exports = mongoose.model('Kindergarten', kindergartensSchema)
+module.exports = mongoose.model('Elementaryschool', elementaryschoolsSchema)
