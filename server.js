@@ -43,7 +43,11 @@ app.use('/api/parking/parkingspecializedplaces', parkingspecializedplaceRouter)
 const treesRouter = require('./routes/environment/trees')
 app.use('/api/environment/trees', treesRouter)
 
+// Education Routers
+const kindergartenRouter = require('./routes/education/kindergartens')
+app.use('/api/education/kindergartens', kindergartenRouter)
 
-app.listen(3000, () => {
-    console.log('Server running on port 3000.');
+
+app.listen(5000, () => {
+    console.log('Server running on port 5000.');
 })
